@@ -17,6 +17,7 @@ import ControllerFactory from '../controllers/ControllerFactory';
 import Controller from '../controllers/Controller';
 import BooleanController from '../controllers/BooleanController';
 import FunctionController from '../controllers/FunctionController';
+import InputController from '../controllers/InputController';
 import NumberControllerBox from '../controllers/NumberControllerBox';
 import NumberControllerSlider from '../controllers/NumberControllerSlider';
 import ColorController from '../controllers/ColorController';
@@ -515,6 +516,17 @@ common.extend(
       );
     },
 
+    addFile: function(object, property) {
+      return add(
+        this,
+        object,
+        property,
+        {
+          file: true
+        }
+      );
+    },
+
     /**
      * @param controller
      * @instance
@@ -1005,6 +1017,8 @@ function add(gui, object, property, params) {
 
   if (params.color) {
     controller = new ColorController(object, property);
+  } else if (params.file) {
+    controller = new InputController(object, property);
   } else {
     const factoryArgs = [object, property].concat(params.factoryArgs);
     controller = ControllerFactory.apply(gui, factoryArgs);

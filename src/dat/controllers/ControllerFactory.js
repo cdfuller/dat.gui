@@ -15,6 +15,7 @@ import OptionController from './OptionController';
 import NumberControllerBox from './NumberControllerBox';
 import NumberControllerSlider from './NumberControllerSlider';
 import StringController from './StringController';
+import InputController from './InputController';
 import FunctionController from './FunctionController';
 import BooleanController from './BooleanController';
 import common from '../utils/common';
@@ -49,6 +50,12 @@ const ControllerFactory = function(object, property) {
   }
 
   if (common.isString(initialValue)) {
+    // debugger;
+    if (property === 'Image') {
+      console.log('Return InputController');
+      return new InputController(object, property);
+    }
+    console.log('Return StringController');
     return new StringController(object, property);
   }
 

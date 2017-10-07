@@ -19,6 +19,7 @@ import Controller from './controllers/Controller';
 import BooleanController from './controllers/BooleanController';
 import OptionController from './controllers/OptionController';
 import StringController from './controllers/StringController';
+import InputController from './controllers/InputController';
 import NumberController from './controllers/NumberController';
 import NumberControllerBox from './controllers/NumberControllerBox';
 import NumberControllerSlider from './controllers/NumberControllerSlider';
@@ -40,6 +41,7 @@ export default {
     BooleanController: BooleanController,
     OptionController: OptionController,
     StringController: StringController,
+    InputController: InputController,
     NumberController: NumberController,
     NumberControllerBox: NumberControllerBox,
     NumberControllerSlider: NumberControllerSlider,

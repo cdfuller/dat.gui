@@ -115,23 +115,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _StringController2 = _interopRequireDefault(_StringController);
 	
-	var _NumberController = __webpack_require__(12);
+	var _InputController = __webpack_require__(12);
+	
+	var _InputController2 = _interopRequireDefault(_InputController);
+	
+	var _NumberController = __webpack_require__(13);
 	
 	var _NumberController2 = _interopRequireDefault(_NumberController);
 	
-	var _NumberControllerBox = __webpack_require__(13);
+	var _NumberControllerBox = __webpack_require__(14);
 	
 	var _NumberControllerBox2 = _interopRequireDefault(_NumberControllerBox);
 	
-	var _NumberControllerSlider = __webpack_require__(14);
+	var _NumberControllerSlider = __webpack_require__(15);
 	
 	var _NumberControllerSlider2 = _interopRequireDefault(_NumberControllerSlider);
 	
-	var _FunctionController = __webpack_require__(15);
+	var _FunctionController = __webpack_require__(16);
 	
 	var _FunctionController2 = _interopRequireDefault(_FunctionController);
 	
-	var _ColorController = __webpack_require__(16);
+	var _ColorController = __webpack_require__(17);
 	
 	var _ColorController2 = _interopRequireDefault(_ColorController);
 	
@@ -139,24 +143,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _GUI = __webpack_require__(17);
+	var _GUI = __webpack_require__(18);
 	
 	var _GUI2 = _interopRequireDefault(_GUI);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	/**
-	 * dat-gui JavaScript Controller Library
-	 * http://code.google.com/p/dat-gui
-	 *
-	 * Copyright 2011 Data Arts Team, Google Creative Lab
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 */
 	
 	exports.default = {
 	  color: {
@@ -170,6 +161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    BooleanController: _BooleanController2.default,
 	    OptionController: _OptionController2.default,
 	    StringController: _StringController2.default,
+	    InputController: _InputController2.default,
 	    NumberController: _NumberController2.default,
 	    NumberControllerBox: _NumberControllerBox2.default,
 	    NumberControllerSlider: _NumberControllerSlider2.default,
@@ -186,7 +178,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  GUI: _GUI2.default
-	};
+	}; /**
+	    * dat-gui JavaScript Controller Library
+	    * http://code.google.com/p/dat-gui
+	    *
+	    * Copyright 2011 Data Arts Team, Google Creative Lab
+	    *
+	    * Licensed under the Apache License, Version 2.0 (the "License");
+	    * you may not use this file except in compliance with the License.
+	    * You may obtain a copy of the License at
+	    *
+	    * http://www.apache.org/licenses/LICENSE-2.0
+	    */
+
 	module.exports = exports['default'];
 
 /***/ },
@@ -1771,6 +1775,104 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Controller3 = _interopRequireDefault(_Controller2);
 	
+	var _dom = __webpack_require__(9);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * dat-gui JavaScript Controller Library
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * http://code.google.com/p/dat-gui
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2011 Data Arts Team, Google Creative Lab
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * http://www.apache.org/licenses/LICENSE-2.0
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	/**
+	 * @class Provides a file input to use an image in your project
+	 *
+	 * @extends dat.controllers.Controller
+	 *
+	 * @param {Object} object The object to be manipulated
+	 * @param {string} property The name of the property to be manipulated
+	 *
+	 * @member dat.controllers
+	 */
+	var InputController = function (_Controller) {
+	  _inherits(InputController, _Controller);
+	
+	  function InputController(object, property) {
+	    _classCallCheck(this, InputController);
+	
+	    var _this2 = _possibleConstructorReturn(this, _Controller.call(this, object, property));
+	
+	    var _this = _this2;
+	
+	    function onChange() {
+	      _this.setValue(_this.__input.value);
+	    }
+	
+	    // function onBlur() {
+	    //   if (_this.__onFinishChange) {
+	    //     _this.__onFinishChange.call(_this, _this.getValue());
+	    //   }
+	    // }
+	
+	    _this2.__input = document.createElement('input');
+	    _this2.__input.setAttribute('type', 'file');
+	
+	    // dom.bind(this.__input, 'keyup', onChange);
+	    _dom2.default.bind(_this2.__input, 'change', onChange);
+	    // dom.bind(this.__input, 'blur', onBlur);
+	    // dom.bind(this.__input, 'keydown', function(e) {
+	    //   if (e.keyCode === 13) {
+	    //     this.blur();
+	    //   }
+	    // });
+	
+	    _this2.updateDisplay();
+	
+	    _this2.domElement.appendChild(_this2.__input);
+	    return _this2;
+	  }
+	
+	  InputController.prototype.updateDisplay = function updateDisplay() {
+	    // Stops the caret from moving on account of:
+	    // keyup -> setValue -> updateDisplay
+	    if (!_dom2.default.isActive(this.__input)) {
+	      this.__input.value = this.getValue();
+	    }
+	    return _Controller.prototype.updateDisplay.call(this);
+	  };
+	
+	  return InputController;
+	}(_Controller3.default);
+	
+	exports.default = InputController;
+	module.exports = exports['default'];
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	var _Controller2 = __webpack_require__(7);
+	
+	var _Controller3 = _interopRequireDefault(_Controller2);
+	
 	var _common = __webpack_require__(5);
 	
 	var _common2 = _interopRequireDefault(_common);
@@ -1917,14 +2019,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _NumberController2 = __webpack_require__(12);
+	var _NumberController2 = __webpack_require__(13);
 	
 	var _NumberController3 = _interopRequireDefault(_NumberController2);
 	
@@ -2067,14 +2169,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _NumberController2 = __webpack_require__(12);
+	var _NumberController2 = __webpack_require__(13);
 	
 	var _NumberController3 = _interopRequireDefault(_NumberController2);
 	
@@ -2189,7 +2291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2275,7 +2377,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2623,7 +2725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2643,15 +2745,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                                                                                                                                                                                                                                                               * http://www.apache.org/licenses/LICENSE-2.0
 	                                                                                                                                                                                                                                                                               */
 	
-	var _css = __webpack_require__(18);
+	var _css = __webpack_require__(19);
 	
 	var _css2 = _interopRequireDefault(_css);
 	
-	var _saveDialogue = __webpack_require__(19);
+	var _saveDialogue = __webpack_require__(20);
 	
 	var _saveDialogue2 = _interopRequireDefault(_saveDialogue);
 	
-	var _ControllerFactory = __webpack_require__(20);
+	var _ControllerFactory = __webpack_require__(21);
 	
 	var _ControllerFactory2 = _interopRequireDefault(_ControllerFactory);
 	
@@ -2663,27 +2765,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _BooleanController2 = _interopRequireDefault(_BooleanController);
 	
-	var _FunctionController = __webpack_require__(15);
+	var _FunctionController = __webpack_require__(16);
 	
 	var _FunctionController2 = _interopRequireDefault(_FunctionController);
 	
-	var _NumberControllerBox = __webpack_require__(13);
+	var _InputController = __webpack_require__(12);
+	
+	var _InputController2 = _interopRequireDefault(_InputController);
+	
+	var _NumberControllerBox = __webpack_require__(14);
 	
 	var _NumberControllerBox2 = _interopRequireDefault(_NumberControllerBox);
 	
-	var _NumberControllerSlider = __webpack_require__(14);
+	var _NumberControllerSlider = __webpack_require__(15);
 	
 	var _NumberControllerSlider2 = _interopRequireDefault(_NumberControllerSlider);
 	
-	var _ColorController = __webpack_require__(16);
+	var _ColorController = __webpack_require__(17);
 	
 	var _ColorController2 = _interopRequireDefault(_ColorController);
 	
-	var _requestAnimationFrame = __webpack_require__(21);
+	var _requestAnimationFrame = __webpack_require__(22);
 	
 	var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
 	
-	var _CenteredDiv = __webpack_require__(22);
+	var _CenteredDiv = __webpack_require__(23);
 	
 	var _CenteredDiv2 = _interopRequireDefault(_CenteredDiv);
 	
@@ -2695,7 +2801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _common2 = _interopRequireDefault(_common);
 	
-	var _style = __webpack_require__(23);
+	var _style = __webpack_require__(24);
 	
 	var _style2 = _interopRequireDefault(_style);
 	
@@ -3176,6 +3282,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	
+	  addFile: function addFile(object, property) {
+	    return _add(this, object, property, {
+	      file: true
+	    });
+	  },
+	
 	  /**
 	   * @param controller
 	   * @instance
@@ -3650,6 +3762,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  if (params.color) {
 	    controller = new _ColorController2.default(object, property);
+	  } else if (params.file) {
+	    controller = new _InputController2.default(object, property);
 	  } else {
 	    var factoryArgs = [object, property].concat(params.factoryArgs);
 	    controller = _ControllerFactory2.default.apply(gui, factoryArgs);
@@ -3920,7 +4034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3962,13 +4076,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = "<div id=\"dg-save\" class=\"dg dialogue\">\n\n  Here's the new load parameter for your <code>GUI</code>'s constructor:\n\n  <textarea id=\"dg-new-constructor\"></textarea>\n\n  <div id=\"dg-save-locally\">\n\n    <input id=\"dg-local-storage\" type=\"checkbox\"/> Automatically save\n    values to <code>localStorage</code> on exit.\n\n    <div id=\"dg-local-explain\">The values saved to <code>localStorage</code> will\n      override those passed to <code>dat.GUI</code>'s constructor. This makes it\n      easier to work incrementally, but <code>localStorage</code> is fragile,\n      and your friends may not see the same values you do.\n\n    </div>\n\n  </div>\n\n</div>";
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3979,11 +4093,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _OptionController2 = _interopRequireDefault(_OptionController);
 	
-	var _NumberControllerBox = __webpack_require__(13);
+	var _NumberControllerBox = __webpack_require__(14);
 	
 	var _NumberControllerBox2 = _interopRequireDefault(_NumberControllerBox);
 	
-	var _NumberControllerSlider = __webpack_require__(14);
+	var _NumberControllerSlider = __webpack_require__(15);
 	
 	var _NumberControllerSlider2 = _interopRequireDefault(_NumberControllerSlider);
 	
@@ -3991,7 +4105,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _StringController2 = _interopRequireDefault(_StringController);
 	
-	var _FunctionController = __webpack_require__(15);
+	var _InputController = __webpack_require__(12);
+	
+	var _InputController2 = _interopRequireDefault(_InputController);
+	
+	var _FunctionController = __webpack_require__(16);
 	
 	var _FunctionController2 = _interopRequireDefault(_FunctionController);
 	
@@ -4004,6 +4122,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _common2 = _interopRequireDefault(_common);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * dat-gui JavaScript Controller Library
+	 * http://code.google.com/p/dat-gui
+	 *
+	 * Copyright 2011 Data Arts Team, Google Creative Lab
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 */
 	
 	var ControllerFactory = function ControllerFactory(object, property) {
 	  var initialValue = object[property];
@@ -4034,6 +4165,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  if (_common2.default.isString(initialValue)) {
+	    // debugger;
+	    if (property === 'Image') {
+	      console.log('Return InputController');
+	      return new _InputController2.default(object, property);
+	    }
+	    console.log('Return StringController');
 	    return new _StringController2.default(object, property);
 	  }
 	
@@ -4046,24 +4183,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  return null;
-	}; /**
-	    * dat-gui JavaScript Controller Library
-	    * http://code.google.com/p/dat-gui
-	    *
-	    * Copyright 2011 Data Arts Team, Google Creative Lab
-	    *
-	    * Licensed under the Apache License, Version 2.0 (the "License");
-	    * you may not use this file except in compliance with the License.
-	    * You may obtain a copy of the License at
-	    *
-	    * http://www.apache.org/licenses/LICENSE-2.0
-	    */
+	};
 	
 	exports.default = ControllerFactory;
 	module.exports = exports['default'];
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4090,7 +4216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4216,10 +4342,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(24)();
+	exports = module.exports = __webpack_require__(25)();
 	// imports
 	
 	
@@ -4230,7 +4356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/*
